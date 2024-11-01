@@ -11,9 +11,7 @@
 #include <stddef.h>
 #include <string.h>
 
-#include "Shared_memory.h"
-
-using std::cout; using std::endl;  
+#include "shared_memory.h" 
 
 int main() {
 
