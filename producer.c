@@ -1,13 +1,13 @@
-// Producer Program for OS
+//Producer Program for OS 
 
-
-#include <iostream>
-#include <cstdlib> 
-
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
 #include <ctype.h>
 #include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
 
@@ -16,10 +16,11 @@
 int main() {
 
         int            fd;
-        char           *shmpath;
+        const char     *shmpath = "my_shared_memory";
         struct shmbuf  *shmp;
 
-        shmpath = "~/cs23001/OS_code/temp";
+       /* Create shared memory object and set its size to the size of our structure. */
+
        /* Create shared memory object and set its size to the size of our structure. */
 
         fd = shm_open(shmpath, O_CREAT | O_RDWR, 0666);
@@ -40,14 +41,14 @@ int main() {
         }
 
 
-        /* Initialize semaphore as process-shared, with value 0, then signal */
+        /* Initialize semaphore as process-shared, with value 0, then signal to increment to 1*/
         if (sem_init(&shmp->sem, 1, 0) == -1) {
                 errExit("sem_init");
         }
 
         sem_post(&shmp->sem);
 
-        /* initialize in out counter */
+        /* initialize: in out counter */
 
         shmp->in = 0;
         shmp->out = 0;
@@ -58,21 +59,27 @@ int main() {
         srand(23109);
         while (true) {
                 //produce item nextp
-                int nextp = rand() % 10 + 1;  
+                int nextp = rand() % 10 + 1;
 
-                //check to make sure buffer isnt full
-                while (shmp->counter == TABLE_SIZE) { 
-                        continue;
+                //check buffer, busy wait if full
+                while (shmp->counter == TABLE_SIZE) {
+                        printf("Buffer is full");
+                        printf("\n");  
+                        continue;   // busy wating
                 }
 
                 //critical section: write to buffer, change counter variable, with semaphore usage
 
                 sem_wait(&shmp->sem);
                 shmp->table[shmp->in] = nextp;
-                cout << "integer " << nextp << " was produced" << endl;
+                printf("integer ");
+                printf("%d", nextp);
+                printf(" was produced");
+                printf("\n");
                 shmp->counter++;
                 sem_post(&shmp->sem);
 
+                //update in index
                 shmp->in = (shmp->in + 1) % TABLE_SIZE;
         }
 }

@@ -1,7 +1,6 @@
-// Consumer Program for OS
+//Consumer Program for OS 
 
-#include <iostream>
-
+#include <stdbool.h>
 #include <ctype.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -13,16 +12,12 @@
 
 #include "shared_memory.h"
 
-using std::cout; using std::endl;
-
 int main() {
 
         int            fd;
-        char           *shmpath;
+        const char     *shmpath = "my_shared_memory";
         size_t         len;
         struct shmbuf  *shmp;
-
-        shmpath = "~/cs23001/OS_code/temp";
 
         /* Open the existing shared memory object and map it into the caller's address space. */
 
@@ -40,20 +35,25 @@ int main() {
 
         while (true) {
 
-                //check to make sure buffer isnt empty
-                while (shmp->counter == 0) {  
-                        continue;
+                while (shmp->counter == 0) {
+                        printf("Buffer is empty");
+                        printf("\n");
+                        continue;   // busy wating
                 }
 
                 //critical section: change counter, get item from buffer, nextc, with semaphore useage
 
                 sem_wait(&shmp->sem);
                 int nextc = shmp->table[shmp->out];
-                cout << "integer " << nextc << " was consumed" << endl; 
+                printf("integer ");
+                printf("%d", nextc);
+                printf(" was consumed");
+                printf("\n");
                 shmp->table[shmp->out] = 0;
                 shmp->counter--;
                 sem_post(&shmp->sem);
 
-                shmp->out = (shmp->out + 1) % TABLE_SIZE; 
+                //change out index
+                shmp->out = (shmp->out + 1) % TABLE_SIZE;
         }
 }

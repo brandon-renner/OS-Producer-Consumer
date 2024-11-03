@@ -1,0 +1,16 @@
+The first step of this project was around the design of two, independent algorithms that would
+act as the producer and consumer functionalities. This step was fairly simple, as not only is 
+this kind of implementation not difficult but this was a subject we studied extensively in class
+and as such was still very fresh in my mind. The only real part of note here was the fact that the 
+initial implementation I created was in c++, and was translated to c for more consisntent implementation
+as the assignment progressed.
+
+The next step of this assignment was actually implementing and creating the code needed to define shared memory
+for these processes. For that, I used the implementation and documentation provided my the instructor
+specifically for this project, utilizing shm_open and mmap. This was the particular reason why c was used 
+rather than c++, as the examples in this documentation focused around c, and thus should make translation
+easier between my purpose and that in the provided resource.
+
+After implementing this code and correcting compile-time issues, problems arose with the run-time functionality
+of this shared memory aswell. The current problem lies with permission acceptances, with it being denied for
+some reason. Email has been sent to Professor, awaiting response. 

@@ -11,8 +11,6 @@
 
 #define TABLE_SIZE 2   /* Maximum size for exchanged string */
 
-char name = 'S';  /* name of shared memory */
-
 /* Define a structure that will be imposed on the shared memory object */
 
 struct shmbuf {
