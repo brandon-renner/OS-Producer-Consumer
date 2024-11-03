@@ -16,7 +16,7 @@
 int main() {
 
         int            fd;
-        const char     *shmpath = "my_shared_memory";
+        const char     *shmpath = "/my_shared_memory";
         struct shmbuf  *shmp;
 
        /* Create shared memory object and set its size to the size of our structure. */
