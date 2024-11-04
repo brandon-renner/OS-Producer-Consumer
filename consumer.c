@@ -21,7 +21,7 @@ int main() {
 
         /* Open the existing shared memory object and map it into the caller's address space. */
 
-        fd = shm_open(shmpath, O_RDWR, 0);
+        fd = shm_open(shmpath, O_CREAT | O_RDWR, S_IRWXU | S_IRWXG | S_IRWXO);
         if (fd == -1) {
                 errExit("shm_open");
         }
