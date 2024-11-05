@@ -23,7 +23,7 @@ int main() {
 
        /* Create shared memory object and set its size to the size of our structure. */
 
-        fd = shm_open(shmpath, O_CREAT | O_RDWR, 0666);
+        fd = shm_open(shmpath, O_CREAT | O_RDWR, S_IRWXU | S_IRWXG | S_IRWXO);
         if (fd == -1) {
                 errExit("shm_open");
         }
