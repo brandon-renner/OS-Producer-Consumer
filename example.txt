@@ -1,1 +1,104 @@
-/* will add when problems have been addressed, and implementation is working correctly */
+The following are screen-sprinted results from running the Producer/Consumer programs,
+copid from the terminal and pasted here. A few examples are listed, all with increasing
+"temp" values. See documentation or program comments to understand what that means.
+
+----------------------------------------------------
+
+Producer produced data: 5
+Producer produced data: 5
+Consumer is consuming data: 5
+Producer produced data: 1
+Consumer is consuming data: 5
+Producer produced data: 5
+
+----------------------------------------------------
+
+Producer produced data: 5
+Producer produced data: 5
+Consumer is consuming data: 5
+Producer produced data: 1
+Consumer is consuming data: 5
+Producer produced data: 5
+Consumer is consuming data: 1
+Producer produced data: 4
+Consumer is consuming data: 5
+Producer produced data: 6
+Consumer is consuming data: 4
+Consumer is consuming data: 6
+Producer produced data: 7
+Consumer is consuming data: 7
+Producer produced data: 1
+Consumer is consuming data: 1
+
+---------------------------------------------------
+
+Producer produced data: 5
+Producer produced data: 5
+Consumer is consuming data: 5
+Producer produced data: 1
+Consumer is consuming data: 5
+Consumer is consuming data: 1
+Producer produced data: 5
+Consumer is consuming data: 5
+Producer produced data: 4
+Consumer is consuming data: 4
+Producer produced data: 6
+Consumer is consuming data: 6
+Producer produced data: 7
+Producer produced data: 1
+Consumer is consuming data: 7
+Producer produced data: 9
+Consumer is consuming data: 1
+Producer produced data: 8
+Consumer is consuming data: 9
+Consumer is consuming data: 8
+Producer produced data: 4
+Consumer is consuming data: 4
+Producer produced data: 1
+Producer produced data: 3
+Consumer is consuming data: 1
+Producer produced data: 2
+
+---------------------------------------------------
+
+Producer produced data: 5
+Producer produced data: 5
+Consumer is consuming data: 5
+Producer produced data: 1
+Consumer is consuming data: 5
+Producer produced data: 5
+Consumer is consuming data: 1
+Producer produced data: 4
+Consumer is consuming data: 5
+Producer produced data: 6
+Consumer is consuming data: 4
+Producer produced data: 7
+Consumer is consuming data: 6
+Producer produced data: 1
+Consumer is consuming data: 7
+Producer produced data: 9
+Consumer is consuming data: 1
+Producer produced data: 8
+Consumer is consuming data: 9
+Producer produced data: 4
+Consumer is consuming data: 8
+Producer produced data: 1
+Consumer is consuming data: 4
+Producer produced data: 3
+Consumer is consuming data: 1
+Producer produced data: 2
+Consumer is consuming data: 3
+Producer produced data: 9
+Consumer is consuming data: 2
+Consumer is consuming data: 9
+Producer produced data: 6
+Consumer is consuming data: 6
+Producer produced data: 2
+Consumer is consuming data: 2
+Producer produced data: 2
+Consumer is consuming data: 2
+Producer produced data: 4
+Producer produced data: 5
+Consumer is consuming data: 4
+Producer produced data: 8
+Consumer is consuming data: 5

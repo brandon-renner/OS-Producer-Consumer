@@ -1,16 +1,22 @@
-The first step of this project was around the design of two, independent algorithms that would
-act as the producer and consumer functionalities. This step was fairly simple, as not only is 
-this kind of implementation not difficult but this was a subject we studied extensively in class
-and as such was still very fresh in my mind. The only real part of note here was the fact that the 
-initial implementation I created was in c++, and was translated to c for more consisntent implementation
-as the assignment progressed.
+    The first step of this project was around the design of two, independent algorithms that would
+act as the producer and consumer functionalities and contain all necessary parts(busy waiting, critical sections,
+etc.).This step was fairly simple, as not only is this kind of implementation not difficult but this was a 
+subject we studied extensively in class and as such was still very fresh in my mind. The only real part of note 
+here was the fact that the implementation I created is written in c++, as is the entire assignment.
 
-The next step of this assignment was actually implementing and creating the code needed to define shared memory
-for these processes. For that, I used the implementation and documentation provided my the instructor
-specifically for this project, utilizing shm_open and mmap. This was the particular reason why c was used 
-rather than c++, as the examples in this documentation focused around c, and thus should make translation
-easier between my purpose and that in the provided resource.
+    The next step of this assignment was actually implementing and creating the code needed to define shared 
+memory for these processes. For that, I first defined a struct object that would hold the kind of data I needed 
+to be shared between the processes. Next, I used the implementation and documentation provided my the instructor
+specifically for this project, utilizing shm_open, ftruncate, and mmap to create shared memory that can be 
+interacted with by each process. Then each process opens a shared semaphore that will be used to protect the 
+critical sections of each algorithm. This is the last step of setup needed for the algorithms, so the program
+goes right into executing the actual producer and consumer algorithms with shared memory elements. It sould be
+mentioned that to prevent infinite execution of producer/consumer interaction, a variable "temp" is shared 
+between each process and is incremented each time a critical section action takes place. this "temp" value is 
+used as the loop variable that determines how long this interaction lasts. See code itself to see implementation 
+of this. 
 
-After implementing this code and correcting compile-time issues, problems arose with the run-time functionality
-of this shared memory aswell. The current problem lies with permission acceptances, with it being denied for
-some reason. Email has been sent to Professor, awaiting response. 
+After the producer/consumer interaction is finished, only a few steps remain. first, each process closes their
+access to the shared semaphore. Then, the consumer unmaps the shared memory, essentially cleaning up the block
+of shared data. That is the full documentation of the implementation of this assignment. For further instruction
+specific comments, see code. 
